@@ -9,6 +9,8 @@ ARG USER_ID=1000
 
 ENV NPM_CONFIG_LOGLEVEL warn
 
+USER root
+
 # Install packages not included in slim
 RUN apt-get update && \
   apt-get install --assume-yes sudo apt-transport-https
@@ -20,5 +22,3 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
   apt-get install yarn
 
 WORKDIR $APP_DIR
-
-USER $USER_ID
